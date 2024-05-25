@@ -123,10 +123,12 @@ process.on('exit', disconnectRpcClient);
 process.on('SIGINT', () => {
     console.log('SIGINT received.'.bgRed);
     disconnectRpcClient();
+    process.exit(0);
 });
 process.on('SIGTERM', () => {
     console.log('SIGTERM received.'.bgRed);
     disconnectRpcClient();
+    process.exit(1);
 });
 
 (async () => {
