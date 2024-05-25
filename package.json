@@ -5,7 +5,7 @@
     "ps-list": "^8.1.1"
   },
   "name": "wuwa-rpc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Unofficial simple Wuthering Waves RPC for basic Discord RPC and time tracking.",
   "main": "client.js",
   "scripts": {
