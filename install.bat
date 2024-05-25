@@ -1,3 +1,5 @@
+@echo off
+
 :: Check if Node.js is installed
 node -v >nul 2>&1
 if %errorlevel% neq 0 (
