@@ -40,7 +40,7 @@ const rpc_data = {
     instance: false,
     buttons: [
         { label: 'Join as Rover', url: 'https://wutheringwaves.kurogames.com/en/' },
-        { label: 'Get RPC', url: 'https://github.com/Project-NEXS/WuWa-Discord-RPC/archive/refs/heads/main.zip' }
+        { label: 'Get RPC', url: 'https://github.com/Project-NEXS/WuWa-Discord-RPC' }
     ]
 };
 
