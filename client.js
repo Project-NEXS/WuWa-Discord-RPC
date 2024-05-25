@@ -100,7 +100,7 @@ function startRpcClient() {
     });
 }
 
-function disconnectRpcClient() {
+const disconnectRpcClient = async () => {
     // Update the end time of the last activity
     const endTimestamp = new Date();
     if (activities.length > 0 && current_activity) {
@@ -108,26 +108,27 @@ function disconnectRpcClient() {
         saveActivityData();
     }
     // Disconnect RPC client
-    rpc.destroy().then(() => {
+    try {
+        await rpc.destroy();
         console.log('Disconnecting RPC client.'.yellow);
         rpcActive = false;
         stopPlaytimeTracker();
         console.log('RPC client disconnected.'.red);
-    }).catch((err) => {
+    } catch (err) {
         console.error('Error disconnecting RPC client:', err);
-    });
-}
+    }
+};
 
 // Listen for process exit events
 process.on('exit', disconnectRpcClient);
-process.on('SIGINT', () => {
+process.on('SIGINT', async () => {
     console.log('SIGINT received.'.bgRed);
-    disconnectRpcClient();
+    await disconnectRpcClient();
     process.exit(0);
 });
-process.on('SIGTERM', () => {
+process.on('SIGTERM', async () => {
     console.log('SIGTERM received.'.bgRed);
-    disconnectRpcClient();
+    await disconnectRpcClient();
     process.exit(1);
 });
 
