@@ -31,18 +31,20 @@ function saveActivityData() {
     fs.writeFileSync(activityLogPath, JSON.stringify(activities, null, 2));
 }
 
-const rpc_data = {
-    details: 'On an adventure~',
-    state: 'Exploring the unknown lands...',
-    startTimestamp: new Date(),
-    largeImageKey: 'wuwa',
-    largeImageText: 'Wuthering Waves 1.0',
-    instance: false,
-    buttons: [
-        { label: 'Join as Rover', url: 'https://wutheringwaves.kurogames.com/en/' },
-        { label: 'Get RPC', url: 'https://github.com/Project-NEXS/WuWa-Discord-RPC' }
-    ]
-};
+const rpc_data = () => {
+    return {
+        details: 'On an adventure~',
+        state: 'Exploring the unknown lands...',
+        startTimestamp: new Date(),
+        largeImageKey: 'wuwa',
+        largeImageText: 'Wuthering Waves 1.0',
+        instance: false,
+        buttons: [
+            { label: 'Join as Rover', url: 'https://wutheringwaves.kurogames.com/en/' },
+            { label: 'Get RPC', url: 'https://github.com/Project-NEXS/WuWa-Discord-RPC' }
+        ]
+    };
+}
 
 async function isProcessRunning(processName) {
     const psList = await import('ps-list');
@@ -54,14 +56,14 @@ function startRpcClient() {
     rpc = new RPC.Client({ transport: 'ipc' });
     rpc.on('ready', () => {
         console.log('Rich Presence is active.'.green);
-        rpc.setActivity(rpc_data);
+        rpc.setActivity(rpc_data());
         console.log('Rich Presence updated!'.green);
 
         // Record the initial activity
         const activity = {
-            details: rpc_data.details,
-            state: rpc_data.state,
-            startTimestamp: formatTime(rpc_data.startTimestamp),
+            details: rpc_data().details,
+            state: rpc_data().state,
+            startTimestamp: formatTime(rpc_data().startTimestamp),
             endTimestamp: null
         }
         activities.push(activity);
