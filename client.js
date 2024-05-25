@@ -13,6 +13,7 @@ RPC.register(clientId);
 const activityLogPath = path.join(__dirname, 'data/records.json');
 
 let activities = [];
+let current_activity = null;
 let checkInterval;
 let rpcActive = false;
 
@@ -56,12 +57,14 @@ function startRpcClient() {
         console.log('Rich Presence updated!'.green);
 
         // Record the initial activity
-        activities.push({
+        const activity = {
             details: rpc_data.details,
             state: rpc_data.state,
             startTimestamp: formatTime(rpc_data.startTimestamp),
             endTimestamp: null
-        });
+        }
+        activities.push(activity);
+        current_activity = activity;
         saveActivityData();
         startPlaytimeTracker();
     });
@@ -74,6 +77,7 @@ function startRpcClient() {
             activities[activities.length - 1].endTimestamp = formatTime(endTimestamp);
             saveActivityData();
         }
+        current_activity = null;
     });
 
     rpc.on('error', (error) => {
@@ -96,7 +100,7 @@ function startRpcClient() {
 function disconnectRpcClient() {
     // Update the end time of the last activity
     const endTimestamp = new Date();
-    if (activities.length > 0) {
+    if (activities.length > 0 && current_activity) {
         activities[activities.length - 1].endTimestamp = formatTime(endTimestamp);
         saveActivityData();
     }

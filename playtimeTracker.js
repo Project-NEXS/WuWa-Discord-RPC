@@ -11,6 +11,7 @@ if (fs.existsSync(playtimePath)) {
 } else {
     totalPlaytime = { hours: 0, minutes: 0, seconds: 0 };
 }
+console.log(`Your total playtime before this session is ${totalPlaytime.hours}h ${totalPlaytime.minutes}m ${totalPlaytime.seconds}s.`.blue)
 
 let intervalId = null;
 
