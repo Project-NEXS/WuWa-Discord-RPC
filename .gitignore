@@ -1,0 +1,4 @@
+node_modules
+data/playtime.json
+data/records.json
+package-lock.json
