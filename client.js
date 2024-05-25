@@ -111,10 +111,8 @@ function disconnectRpcClient() {
         rpcActive = false;
         stopPlaytimeTracker();
         console.log('RPC client disconnected.'.red);
-        process.exit(0); // Exit the process
     }).catch((err) => {
         console.error('Error disconnecting RPC client:', err);
-        process.exit(1); // Exit the process with an error
     });
 }
 
