@@ -25,6 +25,17 @@ if not exist package.json (
     exit /b
 )
 
+:: Check if node_modules exists, if not run npm install
+if not exist node_modules (
+    echo node_modules not found. Running npm install...
+    npm install
+    if %errorlevel% neq 0 (
+        echo Failed to install npm dependencies. Please check the error messages above.
+        pause
+        exit /b
+    )
+)
+
 :: Fetch the latest version from GitHub
 echo Checking for updates...
 node checkUpdates.js
