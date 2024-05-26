@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 require('colors');
 
-const playtimePath = path.join(__dirname, 'data/playtime.json');
-const backupPlaytimePath = path.join(__dirname, 'data/backup_playtime.json');
+const playtimePath = path.join(__dirname, '../data/playtime.json');
+const backupPlaytimePath = path.join(__dirname, '../data/backup_playtime.json');
 
 let totalPlaytime;
 let backupPlaytime;
@@ -19,8 +19,6 @@ function loadPlaytimeData(filePath) {
 
 totalPlaytime = loadPlaytimeData(playtimePath);
 backupPlaytime = loadPlaytimeData(backupPlaytimePath);
-
-console.log(`Your total playtime before this session is ` + `${totalPlaytime.hours}h`.red + ` ${totalPlaytime.minutes}m`.blue + ` ${totalPlaytime.seconds}s.`.green);
 
 let intervalId = null;
 let backupIntervalId = null;
@@ -108,6 +106,8 @@ function verifyAndRestoreData() {
 
 // Verify and restore data before starting the playtime tracker
 verifyAndRestoreData();
+
+console.log(`Your total playtime before this session is ` + `${totalPlaytime.hours}h`.red + ` ${totalPlaytime.minutes}m`.blue + ` ${totalPlaytime.seconds}s.`.green);
 
 // Exporting the functions to start and stop the playtime tracker
 module.exports = { startPlaytimeTracker, stopPlaytimeTracker };

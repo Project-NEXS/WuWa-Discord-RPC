@@ -1,5 +1,5 @@
 @echo off
-title Wuthering Waves RPC
+title Wuthering_Waves_RPC
 
 :: Variables
 set SCRIPT_PATH=%~dp0%~nx0
@@ -32,25 +32,11 @@ if not exist node_modules (
     )
 )
 
-:: Fetch the latest version from GitHub
-echo Checking for updates...
-node checkUpdates.js
-
 :: Create a shortcut to this script in the startup folder
 echo Creating startup shortcut...
 powershell -Command "$s=(New-Object -COM WScript.Shell).CreateShortcut('%STARTUP_FOLDER%\%SHORTCUT_NAME%'); $s.TargetPath='%SCRIPT_PATH%'; $s.WorkingDirectory='%~dp0'; $s.Save()"
 
-:: Run RBTray
-start "" "RBTray.exe"
-
-:: Run the main script
-echo Starting the Rich Presence...
-echo Use ctrl + alt + down to minimize!
-node .
-if %errorlevel% neq 0 (
-    echo Failed to run the script. Please check the error messages above.
-    pause
-    exit /b
-)
+echo Running checks...
+node check.js
 
 pause

@@ -10,7 +10,7 @@ let rpc = new RPC.Client({ transport: 'ipc' });
 
 RPC.register(clientId);
 
-const activityLogPath = path.join(__dirname, 'data/records.json');
+const activityLogPath = path.join(__dirname, '../data/records.json');
 
 let activities = [];
 let current_activity = null;

@@ -1,4 +1,5 @@
 node_modules
 data/playtime.json
 data/records.json
+data/backup_playtime.json
 package-lock.json
