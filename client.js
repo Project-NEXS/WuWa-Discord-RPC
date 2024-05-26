@@ -106,18 +106,21 @@ const disconnectRpcClient = (callback) => {
     if (activities.length > 0 && current_activity) {
         activities[activities.length - 1].endTimestamp = formatTime(endTimestamp);
         saveActivityData();
-    }
-    // Disconnect RPC client
-    rpc.destroy().then(() => {
-        console.log('Disconnecting RPC client.'.yellow);
-        rpcActive = false;
-        stopPlaytimeTracker();
+
+        rpc.destroy().then(() => {
+            console.log('Disconnecting RPC client.'.yellow);
+            rpcActive = false;
+            stopPlaytimeTracker();
+            console.log('RPC client disconnected.'.red);
+            if (callback) callback();
+        }).catch((err) => {
+            console.error('Error disconnecting RPC client:', err);
+            if (callback) callback(err);
+        });
+    } else {
         console.log('RPC client disconnected.'.red);
         if (callback) callback();
-    }).catch((err) => {
-        console.error('Error disconnecting RPC client:', err);
-        if (callback) callback(err);
-    });
+    }
 };
 
 process.on('SIGINT', () => {
