@@ -2,5 +2,6 @@ This folder saves your data related to the RPC. You can check them manually when
 
 playtime.json : Records how much time the RPC has found you playing the game. You can modify it before running the RPC if you want.
 records.json : Records your sessions. Whenever RPC detects the game running, it counts it as session.
+backup_playtime.json : Backups every 5 minutes! Playtime is restored if the main file gets corrupted somehow such as sudden shutdowns.
 
 No data is sent to developer. It is saved on your local storage only.
