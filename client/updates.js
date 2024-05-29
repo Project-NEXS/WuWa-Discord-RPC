@@ -32,17 +32,15 @@ async function update(periodic) {
                 }
             }
         } else {
-            if (localPackage.version !== remotePackage.version) {
-                if (isNaN(localPackage.version) || localPackage.version > remotePackage.version) {
-                    console.log(`The version you are using (${localPackage.version}) is either modified or removed by the author.`.red);
-                    console.log('Please use the latest version available on GitHub.'.yellow);
-                } else {
-                    console.log(`A new version is available: ${remotePackage.version}`.green);
-                    console.log('Trying to auto update...'.blue);
-                    await ensureGitInstalled();
-                    await initializeGitRepo();
-                    await setRemoteAndPull();
-                }
+            if (semver.lt(localPackage.version, remotePackage.version)) {
+                console.log(`A new version is available: ${remotePackage.version}`.green);
+                console.log('Trying to auto update...'.blue);
+                await ensureGitInstalled();
+                await initializeGitRepo();
+                await setRemoteAndPull();
+            } else if (semver.gt(localPackage.version, remotePackage.version)) {
+                console.log(`The version you are using (${localPackage.version}) is either modified or removed by the author.`.red);
+                console.log('Please use the latest version available on GitHub.'.yellow);
             } else {
                 console.log('You are using the latest version.'.green);
             }
