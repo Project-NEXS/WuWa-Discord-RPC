@@ -1,5 +1,6 @@
 @echo off
 
-git pull origin main -f
-
+start cmd /c "git pull origin main -f"
 npm i
+
+pause
