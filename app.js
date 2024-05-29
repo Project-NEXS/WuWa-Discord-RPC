@@ -5,6 +5,7 @@ async function main() {
     try {
         const rbtrayProcess = await startRBTray();
         console.log('Use ' + 'ctrl + alt + down'.bgBlue + ' to minimize!');
+        await require('node-key-sender').sendCombination(['control','alt','down'])
 
         // setInterval(update, 3 * 60 * 1000);
 
