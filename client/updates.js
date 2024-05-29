@@ -1,6 +1,7 @@
 require('colors');
 const https = require('https');
 const fs = require('fs');
+const semver = require('semver');
 const { exec } = require('child_process');
 
 const repo = 'Project-NEXS/WuWa-Discord-RPC';

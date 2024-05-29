@@ -7,7 +7,7 @@
     "semver": "^7.6.2"
   },
   "name": "wuwa-rpc",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Unofficial simple Wuthering Waves RPC for basic Discord RPC and time tracking.",
   "main": "app.js",
   "scripts": {
