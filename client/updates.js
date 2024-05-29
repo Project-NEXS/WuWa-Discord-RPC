@@ -46,6 +46,7 @@ async function update(periodic) {
                 console.log('You are using the latest version.'.green);
             }
         }
+        console.log(remotePackage.message)
     } catch (error) {
         console.error(error.message.red);
     }
