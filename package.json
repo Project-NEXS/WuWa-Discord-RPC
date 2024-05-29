@@ -7,7 +7,7 @@
     "semver": "^7.6.2"
   },
   "name": "wuwa-rpc",
-  "version": "1.2.3.1",
+  "version": "1.2.4",
   "message": "The updates issue should be resolved if you have updated manually.",
   "description": "Unofficial simple Wuthering Waves RPC for basic Discord RPC and time tracking.",
   "main": "app.js",
