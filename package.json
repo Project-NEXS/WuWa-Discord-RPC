@@ -7,7 +7,7 @@
     "semver": "^7.6.2"
   },
   "name": "wuwa-rpc",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "message": "Sorry for the trouble associated with the latest updates.",
   "description": "The updates issue should be resolved if you have updated manually.",
   "main": "app.js",
