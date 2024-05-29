@@ -1,5 +1,9 @@
 # Wuthering Waves Rich Presence
 
+## Issues
+
+> If you ever face issue with updates, open cmd in your installation location and run `git pull origin main -f`.
+
 ## Installation
 
 1. **Ensure Node.js is Installed**

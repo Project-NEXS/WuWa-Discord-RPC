@@ -69,7 +69,7 @@ function stopPlaytimeTracker() {
     intervalId = null;
     backupIntervalId = null;
     console.log('Playtime tracker stopped.'.red);
-    console.log(`Your total playtime before this session is ` + `${totalPlaytime.hours}h`.red + ` ${totalPlaytime.minutes}m`.blue + ` ${totalPlaytime.seconds}s.`.green);
+    console.log(`Your total playtime after this session is ` + `${totalPlaytime.hours}h`.red + ` ${totalPlaytime.minutes}m`.blue + ` ${totalPlaytime.seconds}s.`.green);
 }
 
 function verifyAndRestoreData() {

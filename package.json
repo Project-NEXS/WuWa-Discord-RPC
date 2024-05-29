@@ -9,7 +9,7 @@
   "name": "wuwa-rpc",
   "version": "1.2.2",
   "message": "Sorry for the trouble associated with the latest updates.",
-  "description": "Unofficial simple Wuthering Waves RPC for basic Discord RPC and time tracking.",
+  "description": "The updates issue should be resolved if you have updated manually.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
